@@ -1,0 +1,13 @@
+package com.lucieudo.seller_department_api;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class SellerDepartmentApiApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
