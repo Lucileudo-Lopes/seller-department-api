@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lucieudo.seller_department_api.entity.Seller;
+import com.lucieudo.seller_department_api.exception.ResourceNotFoundException;
 import com.lucieudo.seller_department_api.repository.SellerRepository;
 
 @Service
@@ -19,7 +20,8 @@ public class SellerService {
 	}
 
 	public Seller findById(Integer id) {
-		return repository.findById(id).orElseThrow(() -> new RuntimeException("Seller not found with id: " + id));
+		return repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Seller not found with id: " + id));
 
 	}
 
