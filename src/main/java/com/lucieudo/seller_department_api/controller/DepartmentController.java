@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lucieudo.seller_department_api.entity.Department;
+import com.lucieudo.seller_department_api.dto.DepartmentDTO;
 import com.lucieudo.seller_department_api.service.DepartmentService;
 
 import jakarta.validation.Valid;
@@ -26,30 +26,28 @@ public class DepartmentController {
 	private DepartmentService service;
 
 	@GetMapping
-	public ResponseEntity<List<Department>> findAll() {
+	public ResponseEntity<List<DepartmentDTO>> findAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Department> findById(@PathVariable Integer id){
+	public ResponseEntity<DepartmentDTO> findById(@PathVariable Integer id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<Department> save(@RequestBody @Valid Department obj){
-		return ResponseEntity.status(201).body(service.save(obj));
+	public ResponseEntity<DepartmentDTO> save(@RequestBody @Valid DepartmentDTO dto) {
+		return ResponseEntity.status(201).body(service.save(dto));
 	}
-	
+
 	@PutMapping("/{id}")
-	public ResponseEntity<Department> update(
-		@PathVariable Integer id, 
-		@RequestBody @Valid Department obj){
-		obj.setId(id);
-		return ResponseEntity.ok(service.save(obj));
+	public ResponseEntity<DepartmentDTO> update(@PathVariable Integer id, @RequestBody @Valid DepartmentDTO dto) {
+		dto.setId(id);
+		return ResponseEntity.ok(service.save(dto));
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}

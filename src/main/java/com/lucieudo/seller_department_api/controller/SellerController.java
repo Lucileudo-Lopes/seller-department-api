@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lucieudo.seller_department_api.dto.SellerDTO;
 import com.lucieudo.seller_department_api.entity.Seller;
 import com.lucieudo.seller_department_api.service.SellerService;
 
@@ -26,24 +27,24 @@ public class SellerController {
 	private SellerService service;
 
 	@GetMapping
-	public ResponseEntity<List<Seller>> findAll() {
+	public ResponseEntity<List<SellerDTO>> findAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Seller> findById(@PathVariable Integer id) {
+	public ResponseEntity<SellerDTO> findById(@PathVariable Integer id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
 
 	@PostMapping
-	public ResponseEntity<Seller> save(@RequestBody @Valid Seller obj) {
-		return ResponseEntity.status(201).body(service.save(obj));
+	public ResponseEntity<SellerDTO> save(@RequestBody @Valid SellerDTO dto) {
+		return ResponseEntity.status(201).body(service.save(dto));
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Seller> update(@PathVariable Integer id, @RequestBody @Valid Seller obj) {
-		obj.setId(id);
-		return ResponseEntity.ok(service.save(obj));
+	public ResponseEntity<SellerDTO> update(@PathVariable Integer id, @RequestBody @Valid SellerDTO dto) {
+		dto.setId(id);
+		return ResponseEntity.ok(service.save(dto));
 	}
 
 	@DeleteMapping("/{id}")
