@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request) {
 
 		HttpStatus status = HttpStatus.NOT_FOUND;
-		StandardError err = new StandardError(Instant.now(), status.value(), "Resouce not found", e.getMessage(),
+		StandardError err = new StandardError(Instant.now(), status.value(), "Resource not found", e.getMessage(),
 				request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
 	}
