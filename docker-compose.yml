@@ -22,7 +22,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/sellerdb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: seller123
-      JWT_SECRET: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      JWT_SECRET: aoh5roHVw4IbQqD1K8ksQRxjVRybbkbuDvWVDDi4MZQ=
     depends_on:
       - postgres
 
